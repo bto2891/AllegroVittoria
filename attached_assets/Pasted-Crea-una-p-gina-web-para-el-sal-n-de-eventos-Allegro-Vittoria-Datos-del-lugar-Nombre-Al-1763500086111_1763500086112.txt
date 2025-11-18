@@ -1,0 +1,47 @@
+Crea una página web para el salón de eventos “Allegro Vittoria”.
+
+**Datos del lugar**  
+- Nombre: Allegro Vittoria  
+- Dirección: Blvd. Villas del Mesón 2998-Local 10, Jurica Acueducto, 76226 Juriquilla, Qro., México  
+- Teléfono: 442 130 8164  
+
+**Requisitos funcionales y de diseño**  
+1. Diseño moderno, elegante y profesional, con estilo visual que transmita celebración, sofisticación y calidez.  
+2. Colores sugeridos: tonos oro, blanco, negro y gris suave (puedes adaptarlos).  
+3. La página debe tener las siguientes secciones:  
+   - Cabecera con el logo (o el nombre “Allegro Vittoria”), menú de navegación (Inicio, Servicios, Galería, Reservaciones, Contacto).  
+   - Sección “Sobre nosotros”: breve descripción del salón, su ubicación en Juriquilla, el ambiente, capacidad sugerida.  
+   - Sección “Servicios”: ejemplo de lo que ofrece (bodas, eventos corporativos, cumpleaños, festejos especiales), con iconos o imágenes.  
+   - Sección “Galería”: carrusel de imágenes del salón (puede usar imágenes de stock de salones de eventos elegantes si no se tienen fotos reales).  
+   - Sección “Reservaciones”: formulario de contacto básico que capture nombre, evento, fecha, número de invitados y un botón “Enviar”. También mostrar el teléfono 442 130 8164 para contacto directo.  
+   - Sección “Ubicación”: mapa incrustado de Google Maps que muestre la dirección Blvd. Villas del Mesón 2998-Local 10, Juriquilla, Qro. y un texto indicando cómo llegar (una cuadra de la autopista 57 etc., si se desea).  
+   - Pie de página: repetir dirección, teléfono, redes sociales (puedes usar iconos genéricos si no se tienen definidas), derechos de autor.  
+
+**Aspectos técnicos**  
+- El sitio debe ser **responsive** (adaptable a móvil y escritorio).  
+- Usar HTML5 + CSS3 (o puedes pedir que sea en React/Vue si prefieres).  
+- Bien estructurado semánticamente.  
+- Para el formulario: puedes usar acción dummy (por ahora) o una alerta “Gracias por tu mensaje” al enviar.  
+- Incluir favicon simple con las iniciales “AV” o similar para Allegro Vittoria.  
+- Optimiza para velocidad: imágenes comprimidas, CSS limpio.  
+- Asegúrate de que el formulario tenga validación básica (todos los campos obligatorios).  
+- Añadir animaciones suaves (fade-in para las secciones al hacer scroll) para dar sensación de elegancia.
+
+**Contenido de ejemplo**  
+- Título de la página: “Allegro Vittoria – Salón de Eventos en Juriquilla, Querétaro”  
+- Meta descripción: “Allegro Vittoria en Juriquilla ofrece el escenario perfecto para bodas, eventos corporativos y celebraciones especiales. Ubicado en Blvd. Villas del Mesón 2998-Local 10, a solo una cuadra de la autopista 57. Reserva al 442 130 8164.”  
+- Texto para “Sobre nosotros”:  
+  > “En Allegro Vittoria transformamos cada evento en una experiencia inolvidable. Ubicados en Juriquilla, Querétaro, nuestro salón combina elegancia, versatilidad y atención personalizada para que tu celebración sea perfecta.”  
+- Texto para “Servicios”:  
+  > • Bodas y ceremonias – Creamos el ambiente romántico que siempre soñaste.  
+  > • Eventos corporativos – Espacio flexible para presentaciones, cenas de gala y más.  
+  > • Festejos sociales – Quinceaños, cumpleaños, aniversarios: lo hacemos auténtico.  
+- Texto para contacto:  
+  > “¡Hablemos de tu evento! Llama al 442 130 8164 o completa el formulario y te responderemos en menos de 24 horas.”
+
+**Instrucciones al agente de Replit**  
+Por favor genera el proyecto completo con los archivos necesarios (`index.html`, `styles.css`, `script.js` si aplica) organizados en carpetas, listo para desplegar en Replit. Asegúrate de comentar el código para facilitar futuras modificaciones.
+
+---
+
+Gracias, crea el proyecto y prepáralo para ver una vista previa en móvil y escritorio.  
