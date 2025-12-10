@@ -49,7 +49,13 @@ export function Header({ onNavigate }: HeaderProps) {
               className="font-serif text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent hover-elevate"
               data-testid="link-home"
             >
-              Allegro Vittoria
+              {/* public assets are served from the root in Vite, use absolute path */}
+              {/* Increase size for better visibility across breakpoints */}
+              <img
+                src="/Logo-Allegro.png"
+                alt="Logo Allegro"
+                className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto"
+              />
             </button>
 
             <div className="flex items-center gap-4">

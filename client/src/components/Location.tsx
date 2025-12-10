@@ -50,8 +50,8 @@ export function Location() {
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-6" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ubicados estratégicamente en Juriquilla, a solo una cuadra de la
-            autopista 57
+            Ubicados estratégicamente en Juriquilla, a solo unas cuadras de la
+          UVM
           </p>
         </div>
 
@@ -63,7 +63,7 @@ export function Location() {
           <Card className="lg:col-span-2 p-0 overflow-hidden hover-elevate">
             <div className="aspect-[16/9] lg:aspect-[2/1]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.1234567890!2d-100.4567890!3d20.6234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM3JzI0LjQiTiAxMDDCsDI3JzI0LjQiVw!5e0!3m2!1ses!2smx!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4096.535591975703!2d-100.45116258889622!3d20.707169098666032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d357dcbd27ec13%3A0x40514380993a2d16!2sAllegro%20Vittoria!5e1!3m2!1ses!2smx!4v1765391723954!5m2!1ses!2smx"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -111,7 +111,7 @@ export function Location() {
                     Cómo Llegar
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Ubicados a solo una cuadra de la autopista 57, en la zona de
+                    Ubicados a solo unas cuadras de la UVM, en la zona de
                     Juriquilla. Fácil acceso desde cualquier punto de Querétaro.
                   </p>
                 </div>

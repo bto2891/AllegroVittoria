@@ -37,15 +37,14 @@ export function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div
-            className={`transition-all duration-700 ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-10"
-            }`}
+            className={`transition-all duration-700 ${isVisible
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 -translate-x-10"
+              }`}
           >
             <div className="relative aspect-[4/3] rounded-md overflow-hidden">
               <img
-                src={aboutImage}
+                src={"/Elegancia.png"}
                 alt="Elegante salón de eventos Allegro Vittoria"
                 className="w-full h-full object-cover"
                 data-testid="img-about-venue"
@@ -55,11 +54,10 @@ export function About() {
           </div>
 
           <div
-            className={`transition-all duration-700 delay-200 ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-10"
-            }`}
+            className={`transition-all duration-700 delay-200 ${isVisible
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 translate-x-10"
+              }`}
           >
             <div className="inline-block px-4 py-1 bg-primary/10 rounded-full mb-4">
               <span className="text-primary font-semibold text-sm">
@@ -77,31 +75,28 @@ export function About() {
               className="text-lg text-muted-foreground mb-6 leading-relaxed"
               data-testid="text-about-description"
             >
-              En Allegro Vittoria transformamos cada evento en una experiencia
-              inolvidable. Ubicados en Juriquilla, Querétaro, nuestro salón
-              combina elegancia, versatilidad y atención personalizada para que
-              tu celebración sea perfecta.
+              En Allegro Vittoria transformamos cada evento en una experiencia inolvidable. Ubicados en Juriquilla, Querétaro, nuestro salón combina elegancia, versatilidad y atención personalizada para que tu celebración sea perfecta.
+
             </p>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              Con capacidad para eventos de diversos tamaños, nuestro equipo se
-              dedica a crear el ambiente ideal que refleje la esencia única de
-              cada celebración.
+              Con capacidad para eventos de diversos tamaños, desde 20 en nuestro espacio lounge "privado" y hasta 260 en nuetra área de salón "Allegro Vittoria", nuestro equipo se dedica a crear el ambiente ideal que refleje la esencia única de cada celebración
+
             </p>
             <div className="grid grid-cols-2 gap-6 mt-8">
               <div className="border-l-4 border-primary pl-4">
                 <p className="font-serif text-3xl font-bold text-primary mb-1">
-                  10+
+                  
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  Años de Experiencia
+                  Expertos en Momentos Inolvidables
                 </p>
               </div>
               <div className="border-l-4 border-primary pl-4">
                 <p className="font-serif text-3xl font-bold text-primary mb-1">
-                  500+
+                  
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  Eventos Realizados
+                  Eventos que Hablan por Nosotros
                 </p>
               </div>
             </div>

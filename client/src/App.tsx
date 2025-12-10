@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/not-found";
+import WhatsappFloat from "@/components/WhatsappFloat";
 
 function Router() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
+            <WhatsappFloat />
           <Router />
         </TooltipProvider>
       </ThemeProvider>

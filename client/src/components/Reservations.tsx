@@ -45,8 +45,20 @@ export function Reservations() {
   });
 
   const createReservation = useMutation({
-    mutationFn: async (data: InsertReservation) => {
-      return await apiRequest("POST", "/api/reservations", data);
+    mutationFn: async (data: InsertReservation) => { 
+      console.log("Submitting reservation data:", data);
+      let url = `https://wa.me/524421308164?text=Hola%20quiero%20más%20información%20sobre%20reservar%20un%20evento.%0A%0A`;
+      url += `Nombre:%20${encodeURIComponent(data.name)}%0A`;
+      url += `Correo:%20${encodeURIComponent(data.email)}%0A`;
+      url += `Teléfono:%20${encodeURIComponent(data.phone)}%0A`;
+      url += `Tipo%20de%20Evento:%20${encodeURIComponent(data.eventType)}%0A`;
+      url += `Fecha%20del%20Evento:%20${encodeURIComponent(data.eventDate)}%0A`;
+      url += `Número%20de%20Invitados:%20${encodeURIComponent(data.guestCount)}%0A`;
+      if (data.message) {
+        url += `Mensaje:%20${encodeURIComponent(data.message)}%0A`;
+      }
+      window.open(url, '_blank');
+      
     },
     onSuccess: () => {
       toast({

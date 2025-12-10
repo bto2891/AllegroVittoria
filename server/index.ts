@@ -70,12 +70,40 @@ app.use((req, res, next) => {
   // Other ports are firewalled. Default to 5000 if not specified.
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || '5000', 10);
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
-    log(`serving on port ${port}`);
-  });
+    const port = parseInt(process.env.PORT || '5000', 10);
+
+    // Some platforms (or Node builds) emit an 'error' event when unsupported
+    // options (like reusePort) are used. server.listen does not throw in that
+    // case, so a try/catch is insufficient. Attach a one-time error handler to
+    // catch ENOTSUP and retry without reusePort.
+    const tryListenWithReuse = () => {
+      const onError = (err: any) => {
+        // If reusePort is not supported, retry without it.
+        if (err && err.code === "ENOTSUP") {
+          log("reusePort not supported on this platform; retrying without reusePort");
+          server.off("error", onError);
+          // Retry without reusePort
+          server.listen({ port, host: "0.0.0.0" }, () => {
+            log(`serving on port ${port}`);
+          });
+        } else {
+          // Remove listener and re-emit/exit so we don't swallow unexpected errors
+          server.off("error", onError);
+          log(`server listen error: ${err?.message || err}`);
+          // Let the process crash so the caller / supervisor can handle restarts.
+          process.nextTick(() => {
+            throw err;
+          });
+        }
+      };
+
+      server.once("error", onError);
+
+      server.listen({ port, host: "0.0.0.0", reusePort: true }, () => {
+        server.off("error", onError);
+        log(`serving on port ${port}`);
+      });
+    };
+
+    tryListenWithReuse();
 })();

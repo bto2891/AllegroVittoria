@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@assets/generated_images/Grand_ballroom_hero_image_4e6e294f.png";
 
 interface HeroProps {
   onNavigateToReservations: () => void;
@@ -13,7 +12,7 @@ export function Hero({ onNavigateToReservations }: HeroProps) {
     >
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        style={{ backgroundImage: `url(/Salon_allegro.png)` }}
         data-testid="img-hero-background"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60" />
