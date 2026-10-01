@@ -100,7 +100,7 @@
   <!-- ============ CSS crítico en línea ============ -->
   <style>
     :root{
-      --gold:#c19a2e; --gold-dark:#a07f22; --ink:#161311; --muted:#6b6560;
+      --gold:#c19a2e; --gold-dark:#a07f22; --gold-text:#80651b; --ink:#161311; --muted:#6b6560;
       --bg:#ffffff; --soft:#f6f3ee; --line:#e7e1d8; --wa:#25d366;
       --serif:Georgia,'Times New Roman',serif;
       --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
@@ -130,7 +130,7 @@
     .hero .wrap{position:relative;z-index:1}
     .hero-grid{display:grid;gap:28px}
     /* Panel translúcido detrás del texto -> contraste AA sin oscurecer toda la foto */
-    .hero-copy{background:rgba(10,8,6,.60);border-radius:16px;padding:22px 22px 24px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+    .hero-copy{background:rgba(10,8,6,.80);border-radius:16px;padding:22px 22px 24px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
     .hero h1{font-size:31px;margin-bottom:14px}
     .hero p.sub{font-size:17px;color:#ece7df;margin-bottom:22px;max-width:36ch}
     .cta-primary{display:inline-block;background:var(--gold);color:#161311;font-weight:700;padding:15px 26px;
@@ -145,13 +145,18 @@
     label{display:block;font-size:13px;font-weight:600;margin-bottom:5px}
     input,select{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;font-size:16px;font-family:inherit;background:#fff}
     input:focus,select:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+    /* el campo numérico luce igual que los de texto (sin flechitas de spinner) */
+    input[type=number]{-moz-appearance:textfield;appearance:textfield}
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    .field-error{display:none;color:#8a2020;font-size:12.5px;margin-top:5px}
     .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
     .btn-submit{width:100%;background:var(--gold);color:#161311;font-weight:700;border:0;padding:15px;border-radius:10px;
       font-size:16px;cursor:pointer;font-family:inherit}
     .btn-submit:hover{background:var(--gold-dark)}
     .btn-submit:disabled{opacity:.6;cursor:not-allowed}
     .legal{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.4}
-    .legal a{color:var(--gold-dark);text-decoration:underline}
+    .legal a{color:var(--gold-text);text-decoration:underline}
     .form-note{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center}
     .msg-ok{display:none;text-align:center;padding:22px}
     .msg-ok h3{color:var(--gold-dark);font-size:22px;margin-bottom:8px}
@@ -186,13 +191,13 @@
     .cta-btns{display:flex;flex-direction:column;gap:12px;max-width:360px;margin:0 auto}
     .cta-btns a{padding:15px;border-radius:10px;font-weight:700;text-decoration:none;font-size:16px}
     .btn-gold{background:var(--gold);color:#161311}
-    .btn-wa{background:var(--wa);color:#fff;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+    .btn-wa{background:var(--wa);color:#161311;display:inline-flex;align-items:center;justify-content:center;gap:8px}
 
     /* Footer */
     footer{background:#100e0c;color:#cfc8bd;padding:34px 0;font-size:14px}
     footer a{color:#e6dcc6}
     footer .fr{display:grid;gap:14px}
-    footer h4{color:#fff;font-family:var(--serif);margin-bottom:6px}
+    footer h3{color:#fff;font-family:var(--serif);font-size:14px;margin-bottom:6px}
 
     /* WhatsApp flotante */
     .wa-float{position:fixed;right:16px;bottom:16px;z-index:60;width:56px;height:56px;border-radius:50%;background:var(--wa);
@@ -211,7 +216,7 @@
     .guarantees svg{width:18px;height:18px;flex:0 0 18px;color:var(--gold-dark)}
 
     /* Botón WhatsApp en línea dentro de contenido */
-    .wa-inline{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--wa);color:#fff;
+    .wa-inline{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--wa);color:#161311;
       font-weight:700;padding:12px 18px;border-radius:9px;text-decoration:none;font-size:15px;margin-top:14px}
     .wa-inline svg{width:18px;height:18px}
 
@@ -232,7 +237,7 @@
     .story{display:grid;gap:22px;max-width:760px;margin:0 auto}
     .story-item{border-left:3px solid var(--gold);padding-left:18px}
     .story-item .tag{display:inline-block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
-      color:var(--gold-dark);margin-bottom:6px}
+      color:var(--gold-text);margin-bottom:6px}
     .story-item h3{font-size:20px;margin-bottom:8px}
     .story-item p{color:var(--muted);font-size:15.5px}
 
@@ -330,15 +335,11 @@
               <input type="date" id="fecha" name="fecha" required />
             </div>
             <div class="field">
-              <label for="invitados">Número aproximado de invitados *</label>
-              <select id="invitados" name="invitados" required>
-                <option value="" disabled selected>Selecciona un rango</option>
-                <option value="Menos de 50">Menos de 50</option>
-                <option value="50 a 100">50 a 100</option>
-                <option value="100 a 150">100 a 150</option>
-                <option value="150 a 200">150 a 200</option>
-                <option value="200 a 250">200 a 250</option>
-              </select>
+              <label for="invitados">Número de invitados *</label>
+              <input type="number" id="invitados" name="invitados" required
+                     inputmode="numeric" min="1" max="250" step="1"
+                     autocomplete="off" placeholder="Ej. 80" />
+              <p class="field-error" id="invitados-error"></p>
             </div>
 
             <button type="submit" class="btn-submit" id="submit-btn">Recibe tu cotización sin costo</button>
@@ -366,7 +367,7 @@
           <div class="msg-ok" id="form-success">
             <h3>¡Listo! 🎉</h3>
             <p>Te abrimos WhatsApp con tus datos. Solo dale enviar y te mandamos tu cotización. Si no se abrió, escríbenos al
-              <a href="tel:+524421308164" data-tel="confirmacion" style="color:var(--gold-dark);font-weight:700;white-space:nowrap">442 130 8164</a>.</p>
+              <a href="tel:+524421308164" data-tel="confirmacion" style="color:var(--gold-text);font-weight:700;white-space:nowrap">442 130 8164</a>.</p>
           </div>
         </div>
       </div>
@@ -539,7 +540,7 @@
           <p style="margin-top:14px">
             <a class="btn-dark" href="https://www.google.com/maps/search/?api=1&amp;query=20.7072%2C-100.4512" target="_blank" rel="noopener">Abrir en Google Maps</a>
           </p>
-          <p style="margin-top:14px"><a href="tel:+524421308164" data-tel="ubicacion" style="color:var(--gold-dark);font-weight:700">📞 442 130 8164</a></p>
+          <p style="margin-top:14px"><a href="tel:+524421308164" data-tel="ubicacion" style="color:var(--gold-text);font-weight:700">📞 442 130 8164</a></p>
         </div>
       </div>
     </div>
@@ -563,7 +564,7 @@
   <footer>
     <div class="wrap fr">
       <div>
-        <h4>Allegro Vittoria</h4>
+        <h3>Allegro Vittoria</h3>
         <p>Salón de eventos en Juriquilla, Querétaro.</p>
       </div>
       <div>
@@ -629,31 +630,58 @@
       var form = document.getElementById('lead-form');
       var okBox = document.getElementById('form-success');
 
+      // evita que la ruedita del mouse cambie el valor del campo numérico
+      var invitadosEl = document.getElementById('invitados');
+      if (invitadosEl){
+        invitadosEl.addEventListener('wheel', function(e){
+          if (document.activeElement === invitadosEl){ e.preventDefault(); }
+        }, { passive: false });
+      }
+
       form.addEventListener('submit', function(e){
         e.preventDefault();
 
         // honeypot: si viene lleno, es spam -> no abrir WhatsApp ni disparar conversión
         if (form.website.value.trim() !== ""){ return; }
 
-        // valida campos obligatorios; si falta alguno, lo marca y no continúa
+        // valida "número de invitados": entero entre 1 y 250 (no se redondea)
+        var invError = document.getElementById('invitados-error');
+        invError.style.display = "none";
+        var invRaw = form.invitados.value.trim();
+        var invNum = parseInt(invRaw, 10);
+        if (invRaw === "" || !/^\d+$/.test(invRaw) || invNum < 1){
+          invError.textContent = "Escribe cuántos invitados esperas (de 1 a 250)";
+          invError.style.display = "block";
+          form.invitados.focus();
+          return;
+        }
+        if (invNum > 250){
+          invError.textContent = "La capacidad del salón es de hasta 250 invitados";
+          invError.style.display = "block";
+          form.invitados.focus();
+          return;
+        }
+
+        // valida el resto de campos obligatorios; si falta alguno, lo marca y no continúa
         if (!form.checkValidity()){ form.reportValidity(); return; }
 
-        // arma el mensaje con todos los datos capturados
+        // arma el mensaje con todos los datos capturados (número exacto escrito)
         var msg =
           "Hola, quiero cotizar la posada de fin de año de mi empresa en Allegro Vittoria.\n" +
           "Nombre: " + form.nombre.value + "\n" +
           "Empresa: " + form.empresa.value + "\n" +
           "Teléfono: " + form.telefono.value + "\n" +
           "Fecha tentativa: " + form.fecha.value + "\n" +
-          "Invitados: " + form.invitados.value;
+          "Invitados: " + invRaw;
 
         var url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
 
         // justo antes de abrir WhatsApp: conversión de Google Ads + whatsapp_click
+        // (invitados se envía como número entero, no como texto)
         window.dataLayer.push({
           event: "generate_lead",
           form_name: "posadas_empresariales",
-          invitados: form.invitados.value
+          invitados: invNum
         });
         window.dataLayer.push({ event: "whatsapp_click", link_location: "form-submit" });
 
