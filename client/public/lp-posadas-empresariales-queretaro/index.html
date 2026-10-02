@@ -311,7 +311,8 @@
         <div class="card" id="cotizar">
           <h2>Recibe tu cotización</h2>
 
-          <form id="lead-form" novalidate>
+          <form id="lead-form" name="lead-posadas" method="POST" data-netlify="true" netlify-honeypot="website" novalidate>
+            <input type="hidden" name="form-name" value="lead-posadas" />
             <!-- honeypot anti-spam (no llenar) -->
             <div class="hp" aria-hidden="true">
               <label for="website">No llenar este campo</label>
@@ -375,7 +376,7 @@
   </section>
 
   <!-- 4. BLOQUE DE URGENCIA -->
-  <section class="block urgency">
+  <section class="block urgency" id="fechas">
     <div class="wrap">
       <h2>Diciembre 2026 tiene solo 6 viernes y sábados antes de Navidad</h2>
       <div class="dates">
@@ -418,7 +419,7 @@
   </section>
 
   <!-- 6. TODO LO QUE INCLUYE TU SALÓN -->
-  <section class="block">
+  <section class="block" id="incluye">
     <div class="wrap">
       <div class="h-center">
         <h2>Todo lo que incluye tu salón</h2>
@@ -472,7 +473,7 @@
   </section>
 
   <!-- 7. PREGUNTAS FRECUENTES -->
-  <section class="block soft">
+  <section class="block soft" id="preguntas">
     <div class="wrap">
       <div class="h-center">
         <h2>Preguntas frecuentes</h2>
@@ -515,7 +516,7 @@
   </section>
 
   <!-- 7b. UBICACIÓN -->
-  <section class="block">
+  <section class="block" id="ubicacion">
     <div class="wrap">
       <div class="h-center">
         <h2>Cómo llegar</h2>
@@ -684,6 +685,17 @@
           invitados: invNum
         });
         window.dataLayer.push({ event: "whatsapp_click", link_location: "form-submit" });
+
+        // respaldo: guarda el lead en Netlify Forms (aunque no le den "enviar" en WhatsApp)
+        try {
+          var fd = new FormData(form);
+          fetch(window.location.pathname, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(fd).toString(),
+            keepalive: true
+          }).catch(function(){});
+        } catch (err) {}
 
         // abre WhatsApp en una pestaña nueva con el mensaje prellenado
         window.open(url, "_blank");
