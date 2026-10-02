@@ -1,6 +1,13 @@
 [build]
   publish = "dist/public"
 
+# La landing de posadas siempre se sirve a sí misma (con o sin ?gclid / ?utm_*),
+# antes de la regla comodín de la SPA.
+[[redirects]]
+  from = "/lp-posadas-empresariales-queretaro/*"
+  to = "/lp-posadas-empresariales-queretaro/index.html"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
